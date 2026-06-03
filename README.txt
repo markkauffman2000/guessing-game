@@ -61,3 +61,20 @@ Since Doom Emacs uses Vim navigation keys, you can jump between your left and ri
 Closing a Pane
 If you ever want to collapse the split and go back to a single window, make sure your cursor is in the pane you want to get rid of, and press:
 SPC w c (Window close).
+
+1. Quit the CIDER REPL
+
+Ensure your cursor is in your Clojure source code buffer or the REPL buffer, and press:
+SPC m r q(Localleader -> repl -> quit)
+Fallback method: If a keybinding ever fails or a module update changes it, you can always manually call the function by pressing Alt+x (or Option+x on Mac/iPad), typing cider-quit, and pressing Enter.
+
+2. Save Your Files
+
+- Save the current file: Press SPC f s (File -> Save).
+- Save all open modified files: Press SPC b S (Buffer -> Save all).
+
+3. Exit Doom Emacs
+
+To completely close the editor, press:
+SPC q q (Quit -> Quit).
+If you skip Step 2 and jump straight to SPC q q, Doom still has your back. It will halt the exit process, list any unsaved files at the bottom of the screen, and ask if you want to save them. Pressing y will save the file and complete the shutdown.

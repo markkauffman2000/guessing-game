@@ -6,9 +6,18 @@
 (defn generate-num []
  (inc (rand-int 99)))
 
+
 (defn -main [& args]
-  (println (process-node (first args))))
+  (case (count args)
+    0 ( println (generate-num))
+    1 ( println (process-node (first args)) )
+    (println "wrong number of args")
+   )
+ )
 
-(app.core/-main "live_signal")
+(comment
+  (app.core/-main "live_signal")
 
-(app.core/generate-num)
+  (app.core/-main)
+
+  )

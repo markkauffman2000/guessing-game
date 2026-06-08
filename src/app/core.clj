@@ -1,14 +1,51 @@
 (ns app.core)
+(require '[clojure.edn :as edn])
+
+
 
 (defn process-node [input]
   (str "processing node with input: " input))
 
+(defn get-user-number []
+  (println "Enter your integer guess between 1 and 100")
+  (let [input (read-line)
+    number (edn/read-string input)]
+  (if (integer? number)
+    number
+    (println "That wasn't a valid integer"))
+  ))
+
+
+
+
 (defn generate-num []
- (inc (rand-int 99)))
+  (inc (rand-int 99)))
+
+(defn game-loop [target]
+  (println "target:" target " guess it!")
+  (flush)
+  (let [guess (get-user-number)]
+    (cond
+      (not (integer? guess ))
+      (do
+        (println "Invalid input. Enter a whole number.")
+        (recur target))
+
+      (== guess target)
+      (println "Correct! You win!!``")
+
+      :else
+     (do
+      (println (if (< guess target) "To low!" "Too high!!"))
+      (recur target))
+    ) ;; cond
+    ) ;; let
+  ) ;; defn generate-num
+
 
 (defn play-game []
   (let [the-num (generate-num)]
-    (println "the-num:" the-num)
+    (game-loop the-num)
     )
     "That's all folks!"
   )
@@ -26,4 +63,5 @@
 
   (app.core/-main)
 
+  (app.core/get-user-number)
   )

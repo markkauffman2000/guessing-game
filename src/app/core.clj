@@ -17,12 +17,11 @@
 
 
 
-
+;; Generate a number between 1 and 100.
 (defn generate-num []
   (inc (rand-int 99)))
 
 (defn game-loop [target]
-  (println "target:" target " guess it!")
   (flush)
   (let [guess (get-user-number)]
     (cond
@@ -36,14 +35,17 @@
 
       :else
      (do
-      (println (if (< guess target) "To low!" "Too high!!"))
+      (println "Guess" guess (if (< guess target) "To low!" "Too high!!"))
       (recur target))
     ) ;; cond
-    ) ;; let
+
+   ) ;; let
+
   ) ;; defn generate-num
 
 
 (defn play-game []
+  (println "I have a number between 1 and 100. Guess it!")
   (let [the-num (generate-num)]
     (game-loop the-num)
     )

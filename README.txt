@@ -27,6 +27,10 @@ SPC m e b  <— load the file to get the namespace set up.
 Go to end of a form. Evaluate inline.
 SPC m e e
 
+Save everything, close CIDER and emacs. Write Quit All :wqa
+:wqa
+
+
 1. Don't forget to run 'doom sync' and restart Emacs after modifying init.el or
    packages.el in ~/.config/doom. This is never necessary for config.el.
 
